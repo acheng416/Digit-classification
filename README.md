@@ -15,4 +15,4 @@ UPDATE: Naive Bayes Optimization (98% decrease in running time)
   
   After Optimization:
   
-  ![alt text](https://github.com/acheng416/FoodCalc---Java/blob/master/AfterOptimization.png) 
+  ![alt text](https://github.com/acheng416/Digit-classification/blob/master/AfterOptimization.png) 
