@@ -24,14 +24,20 @@ def runTrials(trial, trainingDigits, testingDigits, testingLabelsData , flattene
     guesses = []
     #Start timing bayes
     bayesStart = time.process_time()
+    learningDigits = classifier.pickData(trainingDigits, percent)
 
+    formattedDigits = classifier.getFormattedTraining(learningDigits)
+            
+    condProbCounters = classifier.getCondProbs(learningDigits)
     for i in range(0, len(testingDigits)):
+        
+
         testIndices.append(i)
         #lp = LineProfiler()
         #lp_wrapper = lp(classifier.naiveBayes)
-        #guesses.append(lp_wrapper(i, testingDigits, trainingDigits, percent))
+        #guesses.append(lp_wrapper(i, testingDigits, formattedDigits, percent, condProbCounters))
         #lp.print_stats()
-        guesses.append(classifier.naiveBayes(i, testingDigits, trainingDigits, percent))
+        guesses.append(classifier.naiveBayes(i, testingDigits, formattedDigits, percent, condProbCounters))
     
     #End timing bayes
     bayesEnd = time.process_time()
@@ -89,13 +95,13 @@ if __name__ == "__main__":
 
     #os.mkdir("stats")
 
-    #if os.path.exists("guesses"):
-        #shutil.rmtree("guesses")
+    if os.path.exists("guesses"):
+        shutil.rmtree("guesses")
 
     os.mkdir("guesses")
 
-    #if os.path.exists("trainingData"):
-        #shutil.rmtree("trainingData")
+    if os.path.exists("trainingData"):
+        shutil.rmtree("trainingData")
     os.mkdir("trainingData")
 
 
