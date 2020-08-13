@@ -39,11 +39,9 @@ def printDigitMat(digit):
             print(str(digit.Mat[i][j]) + "", end="")
         print()
 
-
 def loadRow(digit, rowIndex, line):
     colValues = [1 if line[j]=='+' else 2 if line[j] == '#' else 0  for j in range(0, digitColLen)]
     digit.Mat[rowIndex] = colValues
-
 
 def loadTraining(trainingpath, labelpath, trainingDigits):
     trainingFile = open(trainingpath)
@@ -81,7 +79,6 @@ def loadTraining(trainingpath, labelpath, trainingDigits):
             i+=1
             rowIndex+=1
         
-
 def calcPriors(trainingDigits): #Compute P(C), where C is {0,1,2,...,9} for digits and {face, not-face} for faces
     priorVec = []
     for label in range(0, 10):
@@ -97,7 +94,6 @@ def numLabel(label, data):
             numLabel+=1
     return numLabel
 
-
 def computeLikelihood(label, testDigit, trainingDigits, condProbCounters):
     likelihood = 1.0
     for i in range(0, digitRowLen):
@@ -109,11 +105,9 @@ def computeLikelihood(label, testDigit, trainingDigits, condProbCounters):
                 break
     return likelihood
 
-
 def calcLikelihoods(testDigit, trainingDigits, condProbCounters):
     likelihoods = [computeLikelihood(label, testDigit, trainingDigits, condProbCounters) for label in range(0, 10)]
     return likelihoods
-
 
 def computeCondProb(label, keyTup, trainingDigits, condProbCounters):
     if(keyTup not in condProbCounters):
@@ -122,24 +116,12 @@ def computeCondProb(label, keyTup, trainingDigits, condProbCounters):
         numMatches = condProbCounters.get(keyTup)
         condProb = (numMatches/len(trainingDigits.get(label)))
         return condProb
-
-
-def getFormattedTrainingA(trainingDigits):
-    formattedData = {}
-    for label in range(0, 10):
-        currentLabelDigits = []
-        for digit in trainingDigits:
-            if(int(digit.Val) == label):
-                currentLabelDigits.append(digit)
-        formattedData[label] = currentLabelDigits
-    return formattedData
  
 def getFormattedTraining(trainingDigits):
     formattedData = {}
     for label in range(0, 10):
         formattedData[label] = [digit for digit in trainingDigits if int(digit.Val) == label]
     return formattedData
-
 
 def calcPosteriors(testDigit, trainingDigits, condProbCounters):
     #lp = LineProfiler()
@@ -176,7 +158,6 @@ def naiveBayes(testDigitNum, testDigits, formattedDigits, percent, condProbCount
             #print("Guess is : " + str(maxLabel))
             tup = testDigitNum, maxLabel
             return tup
-
 
 def loadTesting(testingpath, testingDigits):
     testingFile = open(testingpath)
