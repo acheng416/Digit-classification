@@ -10,7 +10,9 @@ UPDATE: Naive Bayes Optimization (98% decrease in running time)
   Naive Bayes has been optimized to classify test data from 250 seconds average to 5 seconds average (100% of training data)
   
   Before Optimization:
+  
   ![alt text](https://github.com/acheng416/Digit-classification/blob/master/BeforeOptimization.png) 
   
   After Optimization:
+  
   ![alt text](https://github.com/acheng416/FoodCalc---Java/blob/master/AfterOptimization.png) 
